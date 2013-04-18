@@ -46,3 +46,8 @@ print(t(19));
 foo["@b"]=100;
 print(foo["@b"]);
 print((Foo.new)["@a"]);
+a = true;
+b = nil;
+print(b||a);
+lbd = \(a,b,c){a*b-c;};
+print(lbd(1,2,3));

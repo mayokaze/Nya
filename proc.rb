@@ -5,19 +5,19 @@ class NyaProc
     @closure = closure
   end
   
-  def call(context, arguments)
+  def call(env, arguments)
     # It's a method call
-    if context.kind_of? NyaObject
+    if env.kind_of? NyaObject
       
-      context = Context.new(context)
+      env = Env.new(env)
     else 
     #It's a lambda call 
-    context.locals = context.locals.merge @closure
+    env.locals = env.locals.merge @closure
     end
     @params.each_with_index do |param, index|
-      context.locals[param] = arguments[index]
+      env.locals[param] = arguments[index]
     end
-    @body.eval(context)
+    @body.eval(env)
   end
 end
 

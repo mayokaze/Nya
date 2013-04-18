@@ -14,15 +14,15 @@ class NyaObject
      @obj_attrs[name] = value
   end
  
- def call(method, context,arguments=[])
+ def call(method, env,arguments=[])
    proc = @obj_attrs[method] #look up object slots
    if proc 
       proc.call(self, arguments)
   elsif proc = @runtime_class.lookup(method) #look up  class and base class
      # p @runtime_class if method == "lbd"
       proc.call(self, arguments)
-  elsif proc = context.locals[method] #look up local functions,possible lambda expression with closure
-      proc.call(context,arguments)
+  elsif proc = env.locals[method] #look up local functions,possible lambda expression with closure
+      proc.call(env,arguments)
   elsif proc = Runtime["Object"].lookup(method) #look up top level functions
       proc.call(self,arguments)
   else

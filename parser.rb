@@ -56,7 +56,7 @@ class Parser
     
     
     
-    gslot = seq_(atom,'[',atom,']'){|n|if(n[0].kind_of? String) then
+    gslot = BOOL|seq_(atom,'[',atom,']'){|n|if(n[0].kind_of? String) then
       r = CallNode.new(nil,n[0],[])
     else
       r = n[0]
@@ -158,7 +158,7 @@ class Parser
     @parser = program.eof#program.eof
  end
   
-  def run source
+  def parse source
     res =  @parser.parse! source
    # p "test"
     p res

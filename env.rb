@@ -1,5 +1,5 @@
 
-class Context
+class Env
   attr_reader  :current_self, :current_class
   attr_accessor :locals
   
