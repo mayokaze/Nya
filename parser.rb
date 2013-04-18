@@ -49,13 +49,6 @@ class Parser
      end
      }
      
-
-    
-    
-
-    
-    
-    
     gslot = BOOL|seq_(atom,'[',atom,']'){|n|if(n[0].kind_of? String) then
       r = CallNode.new(nil,n[0],[])
     else
@@ -68,9 +61,8 @@ class Parser
       r = n[0]
     end    
       CallNode.new(r, "set_slot", [n[2]]<<n[5])}
-    
-
-    call = gslot|seq_(ID,alist,lazy{call2}){|n|if(n[2]) then
+      
+  call = gslot|seq_(ID,alist,lazy{call2}){|n|if(n[2]) then
        r = n[2]
        r = r.receiver while (r.receiver) 
        r.receiver = CallNode.new(nil,n[0],n[1])
