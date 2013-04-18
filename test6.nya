@@ -1,0 +1,48 @@
+Const = 23333;
+
+def plus(a,b){
+ a+b;
+}
+def testl(l){
+  l(1,2);
+}  
+class Test{
+ def t{
+  1;
+  }
+  }
+
+class Foo{
+ @a=10;
+ def foo{
+    a = plus(2,5);
+    @a=2333;
+    print(a);
+    print(Const);
+    t = Test.new;
+    print(t.t);
+    }
+ def bar{
+  n = 10;
+  while n > 0{
+    print(n);
+    n = n-1;
+   }    
+  @a;
+ } 
+ def b2{
+  @b; 
+ } 
+} 
+def testclosure{
+  n = 10;
+  \(a){a+n;};
+  }
+foo = Foo.new;
+foo.foo;
+print(foo.bar);
+t = testclosure;
+print(t(19));
+foo["@b"]=100;
+print(foo["@b"]);
+print((Foo.new)["@a"]);

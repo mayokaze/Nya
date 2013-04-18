@@ -1,0 +1,3 @@
+lbd = \(a,b){a+b;};
+print(lbd(7,8));
+a(b(c(d(a,b,c,d))));

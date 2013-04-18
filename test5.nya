@@ -1,0 +1,4 @@
+Arr = clone;
+Arr[0]=1;
+Arr[1]=2;
+print(Arr[0]);
