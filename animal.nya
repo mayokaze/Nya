@@ -1,0 +1,31 @@
+class Animal{
+ def cry{
+  print("animal cry");
+ }
+}
+class Cat<<Animal{
+ def cry{
+  print("Cat cry");
+ }
+}
+class Dog<<Animal{
+}
+class Bull<<Animal{
+}
+c = Cat.new;
+d = Dog.new;
+b = Bull.new;
+c.cry;
+d.cry;
+b.cry;
+print("Reopen class Dog");
+class Dog{
+ def cry{
+  print("Dog cry");
+ }
+}
+d.cry;
+print("Prototype accessing Bull");
+b["@cry"] = "Bull cry";
+b["cry"] = \{print(@cry);};
+b.cry;

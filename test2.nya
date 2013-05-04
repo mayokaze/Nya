@@ -1,9 +1,8 @@
-if (1==0){
- while 0==1{
-  print(3,a,b);
-  1+2;
- }
- aab;
-}
-
-
+a = 10;
+print(a);
+a = clone;
+a["@name"] = "John";
+a["@age"] = 21;
+print (a["@name"]);
+a["print_name"] = \{print(@name);};
+a.print_name;

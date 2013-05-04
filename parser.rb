@@ -31,6 +31,7 @@ class Parser
   CLASS = word('class').fail 'class'
   DEF = word('def').fail 'def'
   IF = word('if').fail 'if'
+  ELSE = word('else').fail 'else'
   WHILE = word('while').fail 'while'
   UNLESS = word('unless').fail 'unless'
 
@@ -54,7 +55,7 @@ class Parser
     else
       r = n[0]
     end    
-  CallNode.new(r, "get_slot", [n[2]])}
+      CallNode.new(r, "get_slot", [n[2]])}
     sslot = seq_(atom,'[',atom,']','=',lazy{expr}){|n|if(n[0].kind_of? String) then
       r = CallNode.new(nil,n[0],[])
     else
@@ -140,7 +141,7 @@ class Parser
      lambda = seq_("\\",plist,lazy{block}){|n|LambdaNode.new(n[1],n[2])}
      
      expr = assign|bool|lambda
-     ifs = seq_(IF,expr,lazy{block}){|n|IfNode.new(n[1], n[2])}
+     ifs = seq_(IF,expr,lazy{block},ELSE,lazy{block}){|n|IfNode.new(n[1], n[2],n[4])}|seq_(IF,expr,lazy{block}){|n|IfNode.new(n[1], n[2],nil)}
      whiles = seq_(WHILE,expr,lazy{block}){|n|WhileNode.new(n[1], n[2])}
      unlesss = seq_(expr,UNLESS,expr){|n|UnlessNode.new(n[2], n[0])}
     
@@ -153,7 +154,7 @@ class Parser
   def parse source
     res =  @parser.parse! source
    # p "test"
-    p res
+   # p res
   # res.eval 
   end
 end
