@@ -1,6 +1,9 @@
-def test{
- a="a";
- b="b";
+class Test << Base{
+def m1(a,b,c,d){
+ a+b+c+d;
 }
-a="b";
-test;
+}
+def test{
+ print(a);
+ print(b);
+}

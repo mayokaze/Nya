@@ -94,15 +94,6 @@ class SetConstantNode < Struct.new(:name, :value)
     env[name] = value.eval(env)
   end
 end
-
-class SetLocalNode < Struct.new(:name, :value)
-  def eval(env)
-  #  p "========"
-   # p env
-    env.locals[name] = value.eval(env)
-  end
-end
-
 class DefNode < Struct.new(:name, :params, :body)
   def eval(env)
     # Define a method under a class enviroment or nested function or top level
@@ -136,14 +127,16 @@ class ClassNode < Struct.new(:name, :body,:base)
     nya_class
   end
 end
+class SetLocalNode < Struct.new(:name, :value)
+  def eval(env)
+    env.locals[name] = value.eval(env)
+  end
+end
 
-
-class IfNode  < Struct.new(:condition, :body, :else_body)
+class IfNode  < Struct.new(:condition, :body)
   def eval(env)
     if condition.eval(env).ruby_value
       body.eval(env)
-    else
-      else_body.eval(env) if else_body
     end
   end
 end
