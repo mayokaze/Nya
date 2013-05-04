@@ -1,20 +1,2 @@
-class Clazz{
- @prop;
- def t{
-  1;
-  }
- def ttt (v){
-  a = v;
-  C = v;
-  @prop = v;
-  }
- } 
-class  Sub << Clazz{
- def t2{
-  2;
-  }
- def t{
-  233;
-  }
- } 
-
+a = read;
+print(a);

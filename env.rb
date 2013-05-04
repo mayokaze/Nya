@@ -7,6 +7,7 @@ class Env
   @@constants = {}
   
   def initialize(current_self, current_class=current_self.runtime_class)
+    #p "test"
     @locals = {}
     @current_self = current_self
     @current_class = current_class

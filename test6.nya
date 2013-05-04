@@ -49,5 +49,5 @@ print((Foo.new)["@a"]);
 a = true;
 b = nil;
 print(b||a);
-lbd = \(a,b,c){a*b-c;};
-print(lbd(1,2,3));
+sum = \(a,b,c){a+b+c;};
+print(sum(1,2,3));
